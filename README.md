@@ -1,2 +1,4 @@
 Follow below page for get the query creation from method names
 https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods
+
+Course_material table column course_id actually holds the foreign key value referencing the other table Course primary key column course_id.
