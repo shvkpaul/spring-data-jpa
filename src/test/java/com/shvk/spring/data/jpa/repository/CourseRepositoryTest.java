@@ -1,6 +1,7 @@
 package com.shvk.spring.data.jpa.repository;
 
 import com.shvk.spring.data.jpa.entity.Course;
+import com.shvk.spring.data.jpa.entity.Student;
 import com.shvk.spring.data.jpa.entity.Teacher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,5 +110,31 @@ class CourseRepositoryTest {
                 firstPageTenRecords).getContent();
 
         System.out.println("courses = " + courses);
+    }
+
+    @Test
+    public void saveCourseWithStudentAndTeacher() {
+
+        Teacher teacher = Teacher.builder()
+            .firstName("Nils")
+            .lastName("Kohrs")
+            .build();
+
+        Student student = Student.builder()
+            .firstName("Abhishek")
+            .lastName("Sen")
+            .emailId("abhishek@gmail.com")
+            .build();
+
+        Course course = Course
+            .builder()
+            .title("AI")
+            .credit(10)
+            .teacher(teacher)
+            .build();
+
+        course.addStudents(student);
+
+        courseRepository.save(course);
     }
 }
