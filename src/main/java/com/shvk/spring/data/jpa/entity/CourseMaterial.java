@@ -9,6 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString(exclude = "course")
 public class CourseMaterial {
 
     @Id
@@ -25,7 +26,8 @@ public class CourseMaterial {
     private String url;
 
     @OneToOne(
-        cascade = CascadeType.ALL
+        cascade = CascadeType.ALL,
+        fetch = FetchType.LAZY // it will not bring course data until and unless you specify
     )
     @JoinColumn(
             name = "course_id",
