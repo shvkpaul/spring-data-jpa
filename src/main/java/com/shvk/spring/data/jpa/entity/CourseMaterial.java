@@ -26,7 +26,7 @@ public class CourseMaterial {
     private String url;
 
     @OneToOne(
-        cascade = CascadeType.ALL,
+        cascade = CascadeType.ALL,// when you try save course material course also getting saved
         fetch = FetchType.LAZY, // it will not bring course data until and unless you specify
         optional = false // without course material you can not save course
     )
