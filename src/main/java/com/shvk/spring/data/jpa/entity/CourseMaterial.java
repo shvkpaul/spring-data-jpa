@@ -27,7 +27,8 @@ public class CourseMaterial {
 
     @OneToOne(
         cascade = CascadeType.ALL,
-        fetch = FetchType.LAZY // it will not bring course data until and unless you specify
+        fetch = FetchType.LAZY, // it will not bring course data until and unless you specify
+        optional = false // without course material you can not save course
     )
     @JoinColumn(
             name = "course_id",
